@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 24px 24px 85px 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .headerRightPart {
+        display: flex;
+    }
+
+    .headerSecondPart {
+        display: flex;
+        align-items: center;
+
+        nav {
+
+            span {
+                display: flex;
+                gap: 16px;
+            }
+    
+            li a {
+                text-decoration: none;
+            }
+    
+            .slide {
+                clear:both;
+                width:100%;
+                height:0px;
+                overflow: hidden;
+                transition: height .4s ease;
+                position: absolute;
+            }
+    
+            .slide li {
+                padding-top : 10px;
+            }
+    
+            #touch {
+                position: absolute;
+                opacity: 0;
+                height: 0px;
+            }
+    
+            #touch:checked + .slide {
+                height: 80px;
+            }
+        }
+    }
+
+    .lineDivider {
+        width: 1px;
+        height: 32px;
+        background-color: #E9E9E9;
+        margin: 0px 16px;
+    }
+
+    .headerThirdpart {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+          }
+          
+          .switch input { 
+            opacity: 0;
+            width: 0;
+          }
+          
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #757575;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 30px;
+          }
+          
+          .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            margin-top: 3px;
+            margin-left: 3px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+          }
+          
+          input:checked + .slider {
+            background-color: #A445ED;
+          }
+          
+          input:checked + .slider:before {
+            -webkit-transform: translateX(10px);
+            -ms-transform: translateX(10px);
+            transform: translateX(20px);
+          }
+}
+
+
+.searchDiv {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    background-color: #F4F4F4;
+    border-radius: 16px;
+    padding: 14px 25px 17px 24px;
+
+    input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        outline: none;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+
+    }
+}
+
+.wordShower {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .searchedWord {
+        font-size: 32px;
+        line-height: 39px;
+        color: #2D2D2D;
+    }
+
+    .spelling {
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: #A445ED;
+    }
+
+    .playButton {
+        width: 48px;
+    }
+}
+
+.meaningOne {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    .partOfSpeech {
+        font-style: italic;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        color: #2D2D2D;
+    }
+
+    .straightLine {
+        height: 1px;
+        width: 100%;
+        background-color: #E9E9E9;
+    }
+}
+
+.definition {
+    .meaning {
+        margin-top: 31px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #757575;
+    }
+
+    ul {
+        margin-top: 17px;
+        list-style: none;
+        padding-inline-start: 24px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 13px;
+    }
+
+    ul li::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #8F19E8;
+        margin-right: 10px;
+        border-radius: 50%;
+        position: absolute;
+        left: -20px;
+        top: 6px;
+    }
+
+    ul li {
+        position: relative;
+        font-size: 15px;
+        line-height: 24px;
+        color: #2D2D2D;
+    }
+
+    .synonymPart {
+        display: flex;
+        align-items: center;
+        margin-top: 24px;
+        column-gap: 24px;
+
+        .synonym {
+            font-size: 16px;
+            line-height: 19px;
+            color: #757575;
+        }
+
+        .synonymWord {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            color: #A445ED;
+        }
+
+    }
+
+
+}
+
