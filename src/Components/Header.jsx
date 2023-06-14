@@ -7,7 +7,9 @@ import { useState } from 'react';
 import '../App.css';
 import '../styles.scss';
 
-const Header = ( {isChecked, setIsChecked}) => {
+const Header = ( {setChangeFont, changeFont, isChecked, setIsChecked}) => {
+
+  console.log(changeFont);
 
   return (
   <div className="header">
@@ -18,13 +20,13 @@ const Header = ( {isChecked, setIsChecked}) => {
 
 
         <nav>
-          <label htmlFor="touch"><span className={isChecked ? "whiteColor" : ""}>Sans Serif<img src={Arrow}/></span></label>               
+          <label htmlFor="touch"><span className={isChecked ? "whiteColor" : ""}>{changeFont === 1 ? "Sans Serif" : changeFont === 2 ? "Serif" : changeFont === 3 ? "Mono": ""}<img src={Arrow}/></span></label>               
           <input type="checkbox" id="touch"/>
 
           <ul className={`slide ${isChecked ? "whiteColor slideDark" : ""}`}>
-            <button className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Sans Serif</button>
-            <button className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Serif</button>
-            <button className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Mono</button>
+            <button onClick={() => setChangeFont(1)} className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Sans Serif</button>
+            <button onClick={() => setChangeFont(2)} className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Serif</button>
+            <button onClick={() => setChangeFont(3)} className={`buttonLight ${isChecked ? "buttondark" : ""}`}>Mono</button>
           </ul>
         </nav>
 

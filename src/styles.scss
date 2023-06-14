@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 body {
@@ -10,6 +11,18 @@ body {
     min-height: 100vh;
     padding: 24px 24px 85px 24px;
     background-color: #FFFFFF;
+}
+
+body.interFont {
+    font-family: 'Inter';
+}
+
+body.loraFont {
+    font-family: "lora";
+}
+
+body.InconsolataFont {
+    font-family: "Inconsolata";
 }
 
 body.dark-mode {
@@ -361,6 +374,144 @@ input:focus {
 
     .whiteColor {
         color: #FFFFFF;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 58px 40px 118px 40px;
+    }
+
+    
+
+    .header {
+
+        .headerSecondPart nav span{
+            gap: 18px;
+        }
+
+
+        .lineDivider {
+            margin: 0px 26px;
+        }
+
+        .headerThirdpart {
+            column-gap: 20px;
+        }
+    }
+
+    .inputStyle {
+        font-size: 20px;
+        line-height: 21px;
+        margin-top: 52px;
+    }
+
+    .searchImage { 
+        top: 165px;
+        right: 58px;
+    }
+
+    .wordShower {
+        .searchedWord {
+            font-size: 64px;
+            line-height: 67px;
+        }
+
+        .spelling {
+            font-size: 24px;
+            line-height: 29px;
+        }
+
+        .playButton {
+            width: 75px;
+        }
+    }
+
+    .wordFullDefiniton {
+        .partOfSpeechDevider {
+            margin-top: 40px;
+        }
+
+        .partOfSpeech {
+            font-size: 24px;
+            line-height: 25px;
+        }
+
+        .meaning {
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        ul {
+            padding-inline-start: 50px;
+        }
+
+        ul li {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        .synonymPart{
+            margin-top: 40px;
+            column-gap: 22px;
+
+            .synonym {
+                font-size: 20px;
+                line-height: 24px;
+            }
+
+            .synonymWord { 
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+
+        .example {
+                font-size: 18px;
+                line-height: 24px;
+        }
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        margin-top: 19px;
+        .source {
+            margin: 0px 20px 0px 0px;
+        }
+    }
+}
+
+
+.errorPageDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+
+    .errorHeading {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        margin-top: 44px;
+        color: #2D2D2D;
+    }
+
+    .errorHeadingDark {
+        color: #FFFFFF;
+    }
+
+
+    .errorParagraph {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #757575;
+        margin-top: 24px;
     }
 }
 
