@@ -9,8 +9,6 @@ import '../styles.scss';
 
 const Header = ( {setChangeFont, changeFont, isChecked, setIsChecked}) => {
 
-  console.log(changeFont);
-
   return (
   <div className="header">
     <img src={Logo} alt="" />

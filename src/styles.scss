@@ -33,6 +33,7 @@ body.dark-mode {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
 
     .headerRightPart {
         display: flex;
@@ -66,7 +67,6 @@ body.dark-mode {
                 border-radius: 16px;
                 margin-top: 18px;
                 box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
-                right: 120px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -180,7 +180,6 @@ body.dark-mode {
     line-height: 19px;
     padding: 14px 25px 17px 24px;
     background: #F4F4F4;
-    margin-top: 24px;
     border-radius: 16px;
     color: #2D2D2D;
 }
@@ -195,10 +194,13 @@ input:focus {
     outline: 1px solid #A445ED;
 }
 
+.inputDiv {
+    display: flex;
+}
+
 .searchImage {
-    position: absolute;
-    top: 102px;
-    right: 40px;
+    margin-left: -40px;
+    cursor: pointer;
 }
 
 .wordShower {
@@ -288,7 +290,6 @@ input:focus {
         padding-inline-start: 24px;
         display: flex;
         flex-direction: column;
-        // margin-bottom: 13px;
     }
 
     ul li::before {
@@ -377,14 +378,56 @@ input:focus {
     }
 }
 
+.errorPageDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+
+    .errorHeading {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        margin-top: 44px;
+        color: #2D2D2D;
+    }
+
+    .errorHeadingDark {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        margin-top: 44px;
+        color: #FFFFFF;
+    }
+
+
+    .errorParagraph {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #757575;
+        margin-top: 24px;
+    }
+}
+
+.emptyError {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FF5252;
+    margin-top: 8px;
+}
+
 @media (min-width: 768px) {
     body {
         padding: 58px 40px 118px 40px;
     }
 
-    
-
     .header {
+        margin-bottom: 51px;
 
         .headerSecondPart nav span{
             gap: 18px;
@@ -403,15 +446,10 @@ input:focus {
     .inputStyle {
         font-size: 20px;
         line-height: 21px;
-        margin-top: 52px;
-    }
-
-    .searchImage { 
-        top: 165px;
-        right: 58px;
     }
 
     .wordShower {
+        margin-top: 43px;
         .searchedWord {
             font-size: 64px;
             line-height: 67px;
@@ -482,36 +520,38 @@ input:focus {
             margin: 0px 20px 0px 0px;
         }
     }
+
+    .errorPageDiv {
+        .errorParagraph{
+            width: 736px;
+        }
+    }
 }
 
 
-.errorPageDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 85px;
 
-    .errorHeading {
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 24px;
-        text-align: center;
-        margin-top: 44px;
-        color: #2D2D2D;
+@media (min-width: 1440px) {
+    body {
+        padding: 58px 0px 124px 0px;
+        width: 60%;
+        margin: auto;
+
     }
 
-    .errorHeadingDark {
-        color: #FFFFFF;
+    .wordShower {
+        margin-top: 45px;
     }
 
+    .wordFullDefiniton {
+        .synonymPart {
+            margin-top: 64px;
+        }
+    }
 
-    .errorParagraph {
-        font-size: 18px;
-        line-height: 24px;
-        text-align: center;
-        color: #757575;
-        margin-top: 24px;
+    .footer {
+        .straightLine {
+            width: 1px;
+        }
     }
 }
 

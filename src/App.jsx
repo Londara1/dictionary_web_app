@@ -12,19 +12,20 @@ import ErrorPage from './Components/ErrorPage';
 
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [wordDetails, setWordDetails] = useState([]);
+  const [inputValue, setInputValue] = useState(null);
   const [searchedWord, setSearchedWord] = useState("");
   const [spelling, setSpelling] = useState("");
-  const [source, setSource] = useState("");
-
   const [isChecked, setIsChecked] = useState(false);
-
   const [isPlayActive, setIsPlayActive] = useState(false);
-
   const [changeFont, setChangeFont] = useState(1);
+  const [isError, SetIsError] = useState(false);
+  const [wordData, setWordData] = useState([]);
+
+
+
 
   const handlePlayClick = () => {
+    console.log(audioRef.current + "123");
     if (audioRef.current) {
       setIsPlayActive(true);
       audioRef.current.play();
@@ -57,7 +58,7 @@ function App() {
 
 
 
-
+  console.log(wordData);
 
   const handleInputText = (event) => {
     if (event.key === "Enter") {
@@ -83,19 +84,20 @@ function App() {
     try {
       const response = await instance.get(inputWord);
       const wordData = response.data[0];
-
+      setWordData(response.data[0]);
       setSearchedWord(wordData.word);
       setSpelling(wordData.phonetic);
-      setWordDetails(wordData.meanings)
-      setSource(wordData.sourceUrls);
+      SetIsError(false);
 
-      const audioUrl = wordData.phonetics.find((phonetic) => phonetic.audio)?.audio;
+      const audioUrl = wordData.phonetics?.find((phonetic) => phonetic.audio)?.audio;
+      console.log(audioUrl);
       if (audioUrl) {
         audioRef.current = new Audio(audioUrl);
       }
 
     } catch (error) {
       console.log(error);
+      SetIsError(true);
     }
     };
 
@@ -104,25 +106,28 @@ function App() {
     <>
       <Header setChangeFont={setChangeFont} changeFont={changeFont} isChecked={isChecked} setIsChecked={setIsChecked}/>
 
-      <input   className={`inputStyle ${isChecked ? "input-dark-mode" : ""}`} type="text" placeholder='Search for any word…' onChange={(event) => setInputValue(event.target.value)} onKeyDown={handleInputText}/>
-      <img className="searchImage" src={Search} alt="" onClick={handleSearchClick}/>
+      <div className='inputDiv'>
+        <input   className={`inputStyle ${isChecked ? "input-dark-mode" : ""}`} type="text" placeholder='Search for any word…' onChange={(event) => setInputValue(event.target.value)} onKeyDown={handleInputText}/>
+        <img className="searchImage" src={Search} alt="" onClick={handleSearchClick}/>
+      </div>
 
+      {inputValue === "" &&  inputValue !== null && (<p className='emptyError'>Whoops, can’t be empty…</p>)}
 
-      {searchedWord && (
+      {isError ? null : (wordData.word && (
             <div className="wordShower">
             <div>
-              <h1 className={`searchedWord ${isChecked ? "whiteColor" : ""}`}>{searchedWord}</h1>
+              <h1 className={`searchedWord ${isChecked ? "whiteColor" : ""}`}>{wordData.word}</h1>
               <h1 className="spelling">{spelling}</h1>
             </div>
             <div>
               <img src={isPlayActive ? PlayActive : Play} className={`playButton ${isPlayActive ? "active" : ""}`} onClick={handlePlayClick}/>
             </div>
           </div>
-      )}
+      ))}
 
-      <ErrorPage isChecked={isChecked} setIsChecked={setIsChecked}/>
+      {isError ? <ErrorPage isChecked={isChecked} setIsChecked={setIsChecked}/> : null}
 
-      <Meaning wordDetails={wordDetails} searchedWord={searchedWord} isChecked={isChecked} source={source}/>
+      {isError ? null : (<Meaning wordData={wordData} searchedWord={searchedWord} isChecked={isChecked}/>)}
 
     </>
   )

@@ -1,10 +1,11 @@
 import React from "react";
 import {useState} from "react";
 
-const Meaning = ( { wordDetails, searchedWord, isChecked, source }) => {
+const Meaning = ( { wordData, searchedWord, isChecked }) => {
+
     return (
         <>
-        {wordDetails.map((wordDetail, index) => (
+        {wordData.meanings?.map((wordDetail, index) => (
             <div className='wordFullDefiniton' key={index}>
             <div>
                 <div className='partOfSpeechDevider'>
@@ -36,11 +37,11 @@ const Meaning = ( { wordDetails, searchedWord, isChecked, source }) => {
             </div>
             ))}
 
-            {searchedWord &&  (
+            {wordData?.sourceUrls &&  (
             <div className='footer'>
                 <div className='straightLine'></div>
                 <p className='source'>source</p>
-                <a className={`link ${isChecked ? "whiteColor" : ""}`} target="_blank" href={source}>{source}</a>
+                <a className={`link ${isChecked ? "whiteColor" : ""}`} target="_blank" href={wordData.sourceUrls}>{wordData.sourceUrls}</a>
             </div>
             )}
         </>
